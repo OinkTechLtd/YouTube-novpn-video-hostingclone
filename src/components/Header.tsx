@@ -1,4 +1,4 @@
-import { Menu, Search, User } from 'lucide-react';
+import { Menu, Search, User, Upload, BarChart3 } from 'lucide-react';
 import { useState } from 'react';
 import { useApp } from '../context/AppContext';
 
@@ -54,6 +54,20 @@ export const Header = () => {
       </form>
 
       <div className="flex items-center gap-1 md:gap-2">
+        <button
+          onClick={() => setCurrentPage('upload')}
+          className="p-2 hover:bg-gray-100 rounded-full transition-colors hidden md:flex"
+          title="Upload video"
+        >
+          <Upload className="w-5 h-5 md:w-6 md:h-6" />
+        </button>
+        <button
+          onClick={() => setCurrentPage('studio')}
+          className="p-2 hover:bg-gray-100 rounded-full transition-colors hidden md:flex"
+          title="Studio"
+        >
+          <BarChart3 className="w-5 h-5 md:w-6 md:h-6" />
+        </button>
         <button className="p-2 hover:bg-gray-100 rounded-full transition-colors">
           <User className="w-5 h-5 md:w-6 md:h-6" />
         </button>
