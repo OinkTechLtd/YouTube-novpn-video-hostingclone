@@ -1,4 +1,4 @@
-import { Home, Compass, Users, Clock, ThumbsUp } from 'lucide-react';
+import { Home, Compass, Users, Clock, ThumbsUp, Upload, BarChart3 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { useEffect, useState } from 'react';
 import { getSubscriptions } from '../services/database';
@@ -29,6 +29,11 @@ export const Sidebar = () => {
     { id: 'liked', icon: ThumbsUp, label: 'Понравившиеся' },
   ];
 
+  const creatorItems = [
+    { id: 'upload', icon: Upload, label: 'Загрузить видео' },
+    { id: 'studio', icon: BarChart3, label: 'Студия' },
+  ];
+
   const handleChannelClick = (channelId: string) => {
     setSelectedChannelId(channelId);
     setCurrentPage('channel');
@@ -41,6 +46,30 @@ export const Sidebar = () => {
       <nav className="p-2 md:p-3">
         <div className="space-y-1">
           {menuItems.map((item) => {
+            const Icon = item.icon;
+            return (
+              <button
+                key={item.id}
+                onClick={() => setCurrentPage(item.id)}
+                className={`w-full flex items-center gap-3 md:gap-6 px-2 md:px-3 py-2 md:py-2.5 rounded-lg text-xs md:text-sm transition-colors ${
+                  currentPage === item.id
+                    ? 'bg-gray-100 font-medium'
+                    : 'hover:bg-gray-50'
+                }`}
+              >
+                <Icon className="w-5 h-5 flex-shrink-0" />
+                <span className="truncate">{item.label}</span>
+              </button>
+            );
+          })}
+        </div>
+
+        <div className="border-t border-gray-200 my-2 md:my-3"></div>
+        <div className="mb-2 px-2 md:px-3 text-xs md:text-sm font-semibold text-gray-700">
+          Создатель
+        </div>
+        <div className="space-y-1">
+          {creatorItems.map((item) => {
             const Icon = item.icon;
             return (
               <button

@@ -9,6 +9,8 @@ import { SubscriptionsPage } from './pages/SubscriptionsPage';
 import { HistoryPage } from './pages/HistoryPage';
 import { LikedVideosPage } from './pages/LikedVideosPage';
 import { TrendingPage } from './pages/TrendingPage';
+import { UploadPage } from './pages/UploadPage';
+import { StudioPage } from './pages/StudioPage';
 
 const AppContent = () => {
   const { currentPage, sidebarOpen } = useApp();
@@ -31,6 +33,10 @@ const AppContent = () => {
         return <LikedVideosPage />;
       case 'trending':
         return <TrendingPage />;
+      case 'upload':
+        return <UploadPage />;
+      case 'studio':
+        return <StudioPage />;
       default:
         return <HomePage />;
     }
